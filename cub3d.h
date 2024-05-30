@@ -29,21 +29,51 @@ typedef struct s_move {
 	double x;
 	double y;
 } t_move;
+typedef struct s_pos {
+	double x;
+	double y;
+}	t_pos;
 
 typedef struct s_player {
 	int	x;
 	int	y;
 	char	dir;
+	t_pos	pos;
 	t_dirv	dirv;
 	t_rotate	rotate;
 	t_move	move;
 }		t_player;
 
+typedef struct s_dda {
+	int	side;
+	int	hit;
+	double	cam;
+	int	stepx;
+	int	stepy;
+	double step;
+	double raydirx;
+	double raydiry;
+	int mapx;
+	int mapy;
+	double distx;
+	double disty;
+	double ddistx;
+	double ddisty;
+	double dist;
+	int lineheight;
+	int drawstart;
+	int drawend;
+	double wall;
+}		t_dda;
+
 typedef struct s_data {
 	void	*mlx;
 	void	*win;
+	void	*img;
 	t_player player;
 	char	**map;	
+	t_dda	*dda;
+	double i;
 }		t_data;
 
 #endif
