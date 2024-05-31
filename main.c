@@ -1,8 +1,16 @@
 #include "cub3d.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_data data;
 
-	init_mlx(&data);
+	if (argc == 2)
+	{
+		//check_args(argv[1], &data);
+		ft_parse(&data);
+		//ft_init(&data);
+	}
+	else
+		printf("One argument expected\n");
+	return (0);
 }

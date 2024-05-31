@@ -102,9 +102,9 @@ void    raycasting(t_data *data)
     	data->dda->drawend = data->dda->lineheight / 2 + HEIGHT / 2;
     	if (data->dda->drawend > HEIGHT)
     		data->dda->drawend = HEIGHT - 1;
-    	y += draw_line(data, data->map->c, 0, data->dda->drawstart);
+    	/*y += draw_line(data, data->map->c, 0, data->dda->drawstart);
     	y += draw_tex(data, y);
-	    draw_line(data, data->map->f, y, HEIGHT);
+	    draw_line(data, data->map->f, y, HEIGHT);*/
         data->i++;
     }
 }
