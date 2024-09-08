@@ -61,7 +61,6 @@ void check_path(t_data *data)
 {
   int i;
   i = ft_strlen(data->paths.pfile) - 1;
-  printf("%s\n", data->paths.pfile);
   if (data->paths.pfile[i] != 'b' || data->paths.pfile[i - 1] != 'u' ||
       data->paths.pfile[i - 2] != 'c' || data->paths.pfile[i - 3] != '.')
     exit (ft_exit(data, "File must have .cub extension"));
@@ -82,7 +81,7 @@ void parsing(t_data *data)
   get_file(data);
   close (data->fd);
   remove_empty_lines(data);
-  get_paths(data);
+  //get_paths(data);
   //check_paths(data); //Debut des bugs
   //get_map(data);
 }

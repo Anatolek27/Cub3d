@@ -1,43 +1,80 @@
 #include "../Cub3d.h"
+void free_paths2(t_data *data)
+{
+	write(1, "free_paths2 entered\n", 20);
+	if (data->paths.pfile != NULL)
+	{
+		write(1, "pfile\n", 6);
+		free(data->paths.pfile);
+		data->paths.pfile = NULL;
+	}
+	if (data->paths.pc != NULL)
+	{
+		write(1, "pc\n", 3);
+		free(data->paths.pc);
+		data->paths.pc = NULL;
+	}
+	if (data->paths.pf != NULL)
+	{
+		write(1, "pf\n", 3);
+		free(data->paths.pf);
+		data->paths.pf = NULL;
+	}
+	write(1, "free_paths2 closed\n", 19);
+}
+
+void free_paths(t_data *data)
+{
+	write(1, "free_paths entered\n", 19);
+	if (data->paths.pn != NULL)
+	{
+		free(data->paths.pn);
+		data->paths.pn = NULL;
+	}
+	if (data->paths.ps != NULL)
+	{
+		free(data->paths.ps);
+		data->paths.ps = NULL;
+	}
+	if (data->paths.pw != NULL)
+	{
+		free(data->paths.pw);
+		data->paths.pw = NULL;
+	}
+	if (data->paths.pe != NULL)
+	{
+		free(data->paths.pe);
+		data->paths.pe = NULL;
+	}
+	write(1, "free_paths closed\n", 18);
+}
 
 void ft_exit2(t_data *data)
 {
-  	int i;
-
-  	i = 0;
-	if (data->tmp)
-	{
-		while (data->tmp[i])
-		{
-			free(data->tmp[i]);
-            data->tmp[i] = NULL;
-			i++;
-		}
-		free(data->tmp);
-	}
-    if (data->paths.pc)
-      free(data->paths.pc);
-    if (data->paths.pf)
-      free(data->paths.pf);
-    if (data->paths.pn)
-      free(data->paths.pn);
-    if (data->paths.ps)
-      free(data->paths.ps);
-	exit (0);
-}
-
-int ft_exit (t_data *data, char *err)
-{
+	write(1, "Ft_exit2 entered\n", 17);
 	int i;
 
 	i = 0;
-    if (data->paths.pfile)
-    	free(data->paths.pfile);
-	ft_exit2(data);
-	if (data->paths.pw)
-		free(data->paths.pw);
-	if (data->paths.pe)
-		free(data->paths.pe);
+	if (data->tmp != NULL)
+	{
+		while (data->tmp[i] != NULL)
+		{
+			free(data->tmp[i]);
+			data->tmp[i] = NULL;
+			i++;
+		}
+		free(data->tmp);
+		data->tmp = NULL;
+	}
+	write(1, "Ft_exit2 closed\n", 16);
+}
+
+int ft_exit(t_data *data, char *err)
+{
+	write(1, "Ft_exit entered\n", 16);
+	int i;
+
+	i = 0;
 	if (data->file != NULL)
 	{
 		while (data->file[i] != NULL)
@@ -47,8 +84,12 @@ int ft_exit (t_data *data, char *err)
 			i++;
 		}
 		free(data->file);
-        data->file = NULL;
+		data->file = NULL;
 	}
-	printf ("%s\n", err);
+	//free_paths2(data);
+	free_paths(data);
+	//ft_exit2(data);
+	printf("%s\n", err);
+	write(1, "Ft_exit closed\n", 15);
 	return (0);
 }

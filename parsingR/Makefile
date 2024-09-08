@@ -4,13 +4,11 @@ GREEN			= \033[0;32m
 RED				= \033[0;31m
 RESET			= \033[0m
 
-CC 				= gcc -fsanitize=address
+CC 				= cc
 
-STANDARD_FLAGS 	= -Wall -Werror -Wextra
+STANDARD_FLAGS 	= -Wall -Wextra -Werror
 
 REMOVE 			= rm -f
-
-SRCS_DIR		= ./sources/
 
 SRCS 			= main.c			\
 				parsing/get_file.c	\
@@ -26,7 +24,7 @@ SRCS 			= main.c			\
 				gnl/get_next_line.c	\
 				gnl/get_next_line_utils.c \
 
-all:			${LIBFT} ${NAME}
+all:			${NAME}
 
 ${NAME}:
 				${CC} ${SRCS} ${LIBFT} ${STANDARD_FLAGS} -o ${NAME}
@@ -43,5 +41,3 @@ fclean:
 				@echo
 
 re:				fclean all
-
-.PHONY:			all clean fclean re rebonus valgrind run run_bon
