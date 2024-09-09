@@ -55,5 +55,29 @@ typedef struct s_data
 
 int ft_exit(t_data *data, char *err);
 int ft_strlen(char *str);
+int	ft_strcmp(char *s1, char *s2);
+char *ft_strcpy(char *dest, char *src);
+void parsing(t_data *data);
+void get_file(t_data *data);
+void *ft_calloc(size_t count, size_t size);
+int get_line_nb(t_data *data);
+void get_clean_file(t_data *data);
+int line_is_empty(char *line);
+void get_paths(t_data *data);
+void check_t_paths(t_data *data);
+void extract_xpm(t_data *data, char *pre, char *line, int i);
+int	ft_atoi(const char *str);
+int *convert_rgb(char *d, t_data *data);
+char	**ft_split(char const *s, char c);
+void    check_c(t_data *data);
+void    check_f(t_data *data);
+unsigned int rgb_to_hex(int *rgb);
+int check_valid_rgb(t_data *data);
+void check_rgb(t_data *data);
+void get_map(t_data *data);
+int get_longest_line(char **file);
+int get_map_lines(char **file, t_data *data);
+void check_map_chars(t_data *data);
+void	check_map_playable(t_data *data, int x, int y);
 
 #endif
