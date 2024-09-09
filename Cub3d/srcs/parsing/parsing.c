@@ -30,6 +30,8 @@ void parsing(t_data *data)
 	check_t_paths(data);
 	check_rgb(data);
 	get_map(data);
+	data->p.x = -1;	
+	data->p.y = -1;
 	check_map_chars(data);
 	check_map_playable(data, data->p.x, data->p.y);
 }

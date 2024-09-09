@@ -1,16 +1,28 @@
 #include "../../Cub3d.h"
 
-/*void	verify_map_leaks(char **map)
+void	verify_map_leaks(char **map, t_data *data)
 {
 	int i;
 	int j;
 
 	i = 0;
-	while (map[i][j])
+	while (map[i])
 	{
-
+		j = 0;
+		while(map[i][j])
+		{
+			if (map[i][j] == '0')
+			{
+				if (i >= get_map_lines(data->tmp, data) - 1 || j >= get_longest_line(data->tmp) - 1 || i == 0 || j == 0)
+					exit(ft_exit(data, "Error: Map is opened"));
+				if (map[i + 1][j] == '2' || map[i - 1][j] == '2' || map[i][j + 1] == '2' || map[i][j - 1] == '2')
+					exit(ft_exit(data, "Error: Map is opened"));
+			}
+			j++;
+		}
+		i++;
 	}
-}*/
+}
 
 void	verify_if_player_stuck(t_data *data)
 {
@@ -29,8 +41,8 @@ void	check_map_playable(t_data *data, int x, int y)
 		exit(ft_exit(data, "Error: Player can't be on border"));
 	data->map.width = get_longest_line(data->tmp);
 	data->map.length = get_map_lines(data->tmp, data);
-	//verify_map_leaks(data->map.map);
-	//verify_if_player_stuck(data);
+	verify_map_leaks(data->map.map, data);
+	verify_if_player_stuck(data);
 }
 
 void check_map_chars(t_data *data)
@@ -46,14 +58,15 @@ void check_map_chars(t_data *data)
 		{
 			if (data->map.map[i][j] == '2' || data->map.map[i][j] == '1' || data->map.map[i][j] == '0')
 				j++;
-			else if (data->map.map[i][j] == 'N' || data->map.map[i][j] == 'S' || data->map.map[i][j] == 'W' || data->map.map[i][j] == 'E')
+			else if ((data->map.map[i][j] == 'N' || data->map.map[i][j] == 'S' || data->map.map[i][j] == 'W' || data->map.map[i][j] == 'E') && data->p.x == -1)
 			{
 				data->p.dir = data->map.map[i][j++];
+				data->map.map[i][j++] = '0';
 				data->p.x = i;
-				data->p.y = j;
+				data->p.y = j - 1;
 			}
 			else
-				exit(ft_exit(data, "Error: Map contains unrecognizable character or has empty line"));
+				exit(ft_exit(data, "Error: Map contains unrecognizable character or has multiple players"));
 		}
 		i++;
 	}
