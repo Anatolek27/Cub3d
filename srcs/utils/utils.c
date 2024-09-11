@@ -49,7 +49,7 @@ int get_line_nb(t_data *data)
 	}
 	close(data->fd);
 	if (i < 6)
-		ft_exit(data, "Error: Missing content in file");
+		exit(ft_exit(data, "Error: Missing content in file"));
 	return (i);
 }
 

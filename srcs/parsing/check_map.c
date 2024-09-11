@@ -37,8 +37,8 @@ void	check_map_playable(t_data *data, int x, int y)
 		exit(ft_exit(data, "Error: Map unplayable"));
 	if (!data->p.dir)
 		exit (ft_exit(data, "Error: Player missing"));
-	if (!data->map.map[x - 1][y] || !data->map.map[x + 1][y] || !data->map.map[x][y - 1] || !data->map.map[x][y + 1])
-		exit(ft_exit(data, "Error: Player can't be on border"));
+	(void)y;
+	(void)x;
 	data->map.width = get_longest_line(data->tmp);
 	data->map.length = get_map_lines(data->tmp, data);
 	verify_map_leaks(data->map.map, data);
@@ -60,7 +60,7 @@ void check_map_chars(t_data *data)
 				j++;
 			else if ((data->map.map[i][j] == 'N' || data->map.map[i][j] == 'S' || data->map.map[i][j] == 'W' || data->map.map[i][j] == 'E') && data->p.x == -1)
 			{
-				data->p.dir = data->map.map[i][j++];
+				data->p.dir = data->map.map[i][j];
 				data->map.map[i][j++] = '0';
 				data->p.x = i;
 				data->p.y = j - 1;
