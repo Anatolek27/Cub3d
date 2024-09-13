@@ -6,7 +6,7 @@
 /*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 01:58:30 by akunegel          #+#    #+#             */
-/*   Updated: 2024/09/13 01:58:30 by akunegel         ###   ########.fr       */
+/*   Updated: 2024/09/13 12:26:26 by akunegel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@ int	main(int argc, char **argv)
 	data.paths.pfile = argv[1];
 	parsing(&data);
 	printf("C_hex: %X\nF_hex: %X\nC: %d.%d.%d\nF: %d.%d.%d\n", data.t.rgbc_hex, data.t.rgbf_hex, data.t.rgbc[0], data.t.rgbc[1], data.t.rgbc[2], data.t.rgbf[0], data.t.rgbf[1], data.t.rgbf[2]);
+	init_player(&data.p);
+	starting_mlx(&data);
 	return (ft_exit(&data, "Game closed"));
 }

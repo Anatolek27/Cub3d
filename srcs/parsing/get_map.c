@@ -6,7 +6,7 @@
 /*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 01:47:19 by akunegel          #+#    #+#             */
-/*   Updated: 2024/09/13 01:47:19 by akunegel         ###   ########.fr       */
+/*   Updated: 2024/09/13 12:21:25 by akunegel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	cpy_map(t_data *data)
 				data->map.map[i][k] = '2';
 			else if (data->tmp[j][k] == '2')
 				data->map.map[i][k] = '3';
-			else 
+			else
 				data->map.map[i][k] = data->tmp[j][k];
 			k++;
 		}

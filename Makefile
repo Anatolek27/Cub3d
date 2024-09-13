@@ -1,43 +1,48 @@
-NAME			= Cub3d
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/08/05 11:42:32 by akunegel          #+#    #+#              #
+#    Updated: 2024/09/13 12:58:00 by akunegel         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-GREEN			= \033[0;32m
-RED				= \033[0;31m
-RESET			= \033[0m
+NAME	= Cub3d
 
-CC 				= gcc -fsanitize=address
+MLXREP	=	./library/mlx
+MLX		=	-L./$(MLXREP) -lmlx -L/usr/lib -I$(MLXREP) -lXext -lX11 -lm -lz
+CC		=	gcc
+FLAGS	=	-Wall -Wextra -Werror library/mlx/libmlx.a library/mlx/libmlx_Linux.a -Ilibrary -I./ -I./$(MLXREP) -I/usr/include -O3
+RM		=	rm -rf
+SRC		=	srcs/parsing/* srcs/visual/* srcs/utils/* srcs/main.c includes/gnl/*.c
 
-STANDARD_FLAGS 	= -Wall -Wextra -Werror
+#Colors:
+GREEN		=	\e[92;5;118m
+YELLOW		=	\e[93;5;226m
+GRAY		=	\e[33;2;37m
+RESET		=	\e[0m
+CURSIVE		=	\e[33;3m
 
-REMOVE 			= rm -f
+.PHONY: all clean re
 
-SRCS 			= 	srcs/main.c							\
-					srcs/utils/ft_exit.c				\
-					srcs/utils/utils.c					\
-					srcs/utils/utils2.c					\
-					srcs/utils/ft_split.c				\
-					includes/gnl/get_next_line_utils.c	\
-					includes/gnl/get_next_line.c		\
-					srcs/parsing/parsing.c				\
-					srcs/parsing/get_file.c				\
-					srcs/parsing/get_paths.c			\
-					srcs/parsing/get_t_paths.c			\
-					srcs/parsing/paths_checks.c			\
-					srcs/parsing/check_rgb.c			\
-					srcs/parsing/get_map.c				\
-					srcs/parsing/check_map.c
+all: $(NAME)
 
-all:			${NAME}
-
-${NAME}:
-				@${CC} ${SRCS} ${LIBFT} ${STANDARD_FLAGS} -o ${NAME}
-				@echo "$(NAME): $(GREEN)$(NAME) was compiled.$(RESET)"
+$(NAME):
+	@printf "$(CURSIVE)$(GRAY) - Compiling $(NAME)... $(RESET)\n"
+	@make -C library/mlx
+	@$(CC) $(SRC) -o $(NAME) $(MLX)
+	@printf "$(GREEN)    - Executable ready.\n$(RESET)"
 
 clean:
-				@echo "$(NAME): $(RED)$(NAME) was removed.$(RESET)"
-				@$(REMOVE) $(NAME)
+	@$(RM) $(NAME)
+	@printf "$(YELLOW)    - Executable removed.$(RESET)\n"
 
 fclean:
-				@${REMOVE} ${NAME}
-				@echo "${NAME}: ${RED}${NAME} were deleted${RESET}"
+	@$(RM) $(NAME)
+	@make clean -C library/mlx
+	@printf "$(YELLOW)    - Executable removed.$(RESET)\n"
 
-re:				fclean all
+re: clean all
