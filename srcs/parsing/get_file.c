@@ -1,32 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_file.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/13 01:43:15 by akunegel          #+#    #+#             */
+/*   Updated: 2024/09/13 01:43:15 by akunegel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../Cub3d.h"
 
-int get_width(t_data *data)
+int	get_width(t_data *data)
 {
-  int w;
-  int i;
-  int j;
+	int	w;
+	int	i;
+	int	j;
 
-  w = 0;
-  i = 0;
-  while (data->file[i])
-  {
-    if (line_is_empty(data->file[i]) == 1)
-    {
-      j = 0;
-      while (data->file[i][j])
-        j++;
-      if (j > w)
-        w = j;
-    }
-    i++;
-  }
-  return (w);
+	w = 0;
+	i = 0;
+	while (data->file[i])
+	{
+		if (line_is_empty(data->file[i]) == 1)
+		{
+			j = 0;
+			while (data->file[i][j])
+				j++;
+			if (j > w)
+				w = j;
+		}
+		i++;
+	}
+	return (w);
 }
 
-int get_length(char **file, t_data *data)
+int	get_length(char **file, t_data *data)
 {
-	int i;
-	int c;
+	int	i;
+	int	c;
 
 	c = 0;
 	i = 0;
@@ -39,13 +51,13 @@ int get_length(char **file, t_data *data)
 		i++;
 	}
 	if (c < 7)
-		exit (ft_exit(data, "Error: Missing file content"));
+		exit(ft_exit(data, "Error: Missing file content"));
 	return (c);
 }
 
-void remove_empty_lines(t_data *data)
+void	remove_empty_lines(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	data->map.length = get_length(data->file, data);
@@ -61,11 +73,11 @@ void remove_empty_lines(t_data *data)
 	}
 }
 
-void get_clean_file(t_data *data)
+void	get_clean_file(t_data *data)
 {
-	int i;
-	int j;
-	int k;
+	int	i;
+	int	j;
+	int	k;
 
 	i = 0;
 	j = 0;
@@ -76,25 +88,25 @@ void get_clean_file(t_data *data)
 		if (line_is_empty(data->file[i]) == 0 && j < 7)
 			i++;
 		else
+		{
+			k = 0;
+			while (data->file[i][k] || data->file[i][k])
 			{
-				k = 0;
-				while (data->file[i][k] || data-> file[i][k])
-				{
-					data->tmp[j][k] = data->file[i][k];
-					k++;
-				}
-				data->tmp[j][k] = '\0';
-				j++;
-				i++;
+				data->tmp[j][k] = data->file[i][k];
+				k++;
 			}
+			data->tmp[j][k] = '\0';
+			j++;
+			i++;
+		}
 	}
 }
 
-void get_file(t_data *data)
+void	get_file(t_data *data)
 {
-	char *line;
-	int i;
-	int j;
+	char	*line;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;

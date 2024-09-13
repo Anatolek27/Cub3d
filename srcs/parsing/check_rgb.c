@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_rgb.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/13 01:41:56 by akunegel          #+#    #+#             */
+/*   Updated: 2024/09/13 01:41:58 by akunegel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../Cub3d.h"
 
-int check_number(char *s)
+int	check_number(char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i])
@@ -14,28 +26,25 @@ int check_number(char *s)
 	return (1);
 }
 
-// verif rgb entre 0 et 255
-
-int check_valid_rgb(t_data *data)
+int	check_valid_rgb(t_data *data)
 {
 	int	i;
 
 	i = 0;
 	while (i < 3)
 	{
-		if (data->t.rgbc[i] < 0 || data->t.rgbc[i] > 255 || data->t.rgbf[i] < 0 || data->t.rgbf[i] > 255)
+		if (data->t.rgbc[i] < 0 || data->t.rgbc[i] > 255
+			|| data->t.rgbf[i] < 0 || data->t.rgbf[i] > 255)
 			exit (ft_exit(data, "Error: RGB format not respected"));
 		i++;
 	}
 	return (1);
 }
 
-// verif 3 nombres dans rgb sol
-
-void    check_f(t_data *data)
+void	check_f(t_data *data)
 {
-	int i;
-	int c;
+	int	i;
+	int	c;
 
 	c = 0;
 	i = 0;
@@ -57,10 +66,10 @@ void    check_f(t_data *data)
 
 // verif 3 nombres dans rgb toit
 
-void    check_c(t_data *data)
+void	check_c(t_data *data)
 {
-	int i;
-	int c;
+	int	i;
+	int	c;
 
 	c = 0;
 	i = 0;
@@ -80,11 +89,11 @@ void    check_c(t_data *data)
 	}
 }
 
-int *convert_rgb(char *d, t_data *data)
+int	*convert_rgb(char *d, t_data *data)
 {
-	char **tmp;
-	int *rgb;
-	int i;
+	char	**tmp;
+	int		*rgb;
+	int		i;
 
 	i = 0;
 	tmp = ft_split(d, ',');
@@ -99,9 +108,9 @@ int *convert_rgb(char *d, t_data *data)
 	while (i != 3)
 	{
 		rgb[i] = ft_atoi(tmp[i]);
-        free(tmp[i]);
+		free(tmp[i]);
 		i++;
 	}
-    free (tmp);
+	free (tmp);
 	return (rgb);
 }

@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_map.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/13 01:47:19 by akunegel          #+#    #+#             */
+/*   Updated: 2024/09/13 01:47:19 by akunegel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../Cub3d.h"
 
-void cpy_map(t_data *data)
+void	cpy_map(t_data *data)
 {
-	int i;
-	int j;
-	int k;
+	int	i;
+	int	j;
+	int	k;
 
 	i = 0;
 	j = 6;
@@ -17,7 +29,7 @@ void cpy_map(t_data *data)
 				data->map.map[i][k] = '2';
 			else if (data->tmp[j][k] == '2')
 				data->map.map[i][k] = '3';
-			else	
+			else 
 				data->map.map[i][k] = data->tmp[j][k];
 			k++;
 		}
@@ -28,9 +40,9 @@ void cpy_map(t_data *data)
 	data->map.map[i] = NULL;
 }
 
-int get_map_lines(char **file, t_data *data)
+int	get_map_lines(char **file, t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 6;
 	while (file[i])
@@ -42,11 +54,11 @@ int get_map_lines(char **file, t_data *data)
 	return (i - 6);
 }
 
-int get_longest_line(char **file)
+int	get_longest_line(char **file)
 {
-	int i;
-	int j;
-	int c;
+	int	i;
+	int	j;
+	int	c;
 
 	i = 6;
 	c = 0;
@@ -62,12 +74,13 @@ int get_longest_line(char **file)
 	return (c);
 }
 
-void get_map(t_data *data)
+void	get_map(t_data *data)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
-	data->map.map = (char **)malloc(sizeof(char *) * (get_map_lines(data->tmp, data) + 1));
+	data->map.map = malloc(sizeof(char *)
+			* (get_map_lines(data->tmp, data) + 1));
 	if (!data->map.map)
 		exit(ft_exit(data, "Error: Malloc error"));
 	i = get_longest_line(data->tmp);

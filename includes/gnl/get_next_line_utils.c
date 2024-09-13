@@ -6,15 +6,15 @@
 /*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 15:04:30 by akunegel          #+#    #+#             */
-/*   Updated: 2024/08/08 15:01:25 by akunegel         ###   ########.fr       */
+/*   Updated: 2024/09/13 02:10:15 by akunegel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int ft_strlen_gnl(char *str)
+int	ft_strlen_gnl(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -62,7 +62,7 @@ char	*f_strjoin(char *s1, char *s2)
 	i = 0;
 	if (s1 == NULL)
 		return (f_strdup(s2));
-	res = (char *)malloc(sizeof(char) * (ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1));
+	res = malloc(sizeof(char) * (ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1));
 	if (!res)
 		return (NULL);
 	while (s1[i])

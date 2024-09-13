@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/13 02:04:24 by akunegel          #+#    #+#             */
+/*   Updated: 2024/09/13 02:05:57 by akunegel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../Cub3d.h"
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -10,21 +22,22 @@ int ft_strlen(char *str)
 	return (i);
 }
 
-int line_is_empty(char *line)
+int	line_is_empty(char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i] != '\0')
 	{
-		if (line[0] == '\n' || line[0] == '\t' || line[0] == '\v' || line[0] == ' ' ||
-			line[i] == '\r' || line[i] == 'f')
+		if (line[0] == '\n' || line[0] == '\t' || line[0] == '\v'
+			|| line[0] == ' ' || line[i] == '\r' || line[i] == 'f')
 		{
-			while (line[i] == ' ' || line[i] == '\t' || line[i] == '\n' || line[i] == '\v' ||
-				   line[i] == '\r' || line[i] == 'f')
+			while (line[i] == ' ' || line[i] == '\t'
+				|| line[i] == '\n' || line[i] == '\v'
+				|| line[i] == '\r' || line[i] == 'f')
 			{
 				if (line[i] == '\n')
-					return 0;
+					return (0);
 				i++;
 			}
 		}
@@ -33,10 +46,10 @@ int line_is_empty(char *line)
 	return (0);
 }
 
-int get_line_nb(t_data *data)
+int	get_line_nb(t_data *data)
 {
-	int i;
-	char *line;
+	int		i;
+	char	*line;
 
 	i = 0;
 	data->fd = open(data->paths.pfile, O_RDONLY);
@@ -53,9 +66,9 @@ int get_line_nb(t_data *data)
 	return (i);
 }
 
-void ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
-	unsigned char *p;
+	unsigned char	*p;
 
 	p = (unsigned char *)s;
 	while (n != 0)
@@ -66,9 +79,9 @@ void ft_bzero(void *s, size_t n)
 	}
 }
 
-void *ft_calloc(size_t count, size_t size)
+void	*ft_calloc(size_t count, size_t size)
 {
-	void *r;
+	void	*r;
 
 	r = malloc(count * size);
 	if (!r)

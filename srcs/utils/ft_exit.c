@@ -1,23 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/13 02:02:55 by akunegel          #+#    #+#             */
+/*   Updated: 2024/09/13 02:03:59 by akunegel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../Cub3d.h"
 
-void free_map(t_data *data)
+void	free_map(t_data *data)
 {
-    int i;
+	int	i;
 
 	i = 0;
-    if (data->map.map)
-    {
-        while (data->map.map[i])
-        {
-            free(data->map.map[i]);
-            i++;
-        }
-        free(data->map.map);
+	if (data->map.map)
+	{
+		while (data->map.map[i])
+		{
+			free(data->map.map[i]);
+			i++;
+		}
+		free(data->map.map);
 		data->map.map = NULL;
-    }
+	}
 }
 
-void free_paths(t_data *data)
+void	free_paths(t_data *data)
 {
 	if (data->paths.pc)
 		free(data->paths.pc);
@@ -35,9 +47,9 @@ void free_paths(t_data *data)
 	free(data->t.rgbf);
 }
 
-void free_tmp(t_data *data)
+void	free_tmp(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (data->tmp)
@@ -51,9 +63,9 @@ void free_tmp(t_data *data)
 	}
 }
 
-int ft_exit(t_data *data, char *err)
+int	ft_exit(t_data *data, char *err)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (err != NULL)
