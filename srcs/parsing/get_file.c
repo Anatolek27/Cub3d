@@ -100,6 +100,8 @@ void	get_clean_file(t_data *data)
 			i++;
 		}
 	}
+	data->tmp[j] = NULL;
+	data->bool = 1;
 }
 
 void	get_file(t_data *data)

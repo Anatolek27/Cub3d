@@ -52,7 +52,7 @@ void	free_tmp(t_data *data)
 	int	i;
 
 	i = 0;
-	if (data->tmp)
+	if (data->bool = 1)
 	{
 		while (data->tmp[i])
 		{

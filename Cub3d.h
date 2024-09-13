@@ -77,6 +77,7 @@ typedef struct s_textures
 
 typedef struct s_data
 {
+	int 		bool;
 	t_player	p;
 	t_map		map;
 	t_paths		paths;

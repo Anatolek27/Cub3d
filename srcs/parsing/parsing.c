@@ -29,6 +29,7 @@ void	check_file_name(t_data *data)
 	data->file = ft_calloc(get_line_nb(data) + 1, sizeof(char *));
 	if (!data->file)
 		exit (ft_exit(data, "Error: Malloc error"));
+	data->bool = 0;
 }
 
 void	parsing(t_data *data)
