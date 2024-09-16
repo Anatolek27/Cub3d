@@ -6,7 +6,7 @@
 /*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 01:47:19 by akunegel          #+#    #+#             */
-/*   Updated: 2024/09/13 12:21:25 by akunegel         ###   ########.fr       */
+/*   Updated: 2024/09/16 17:05:21 by akunegel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ int	get_map_lines(char **file, t_data *data)
 	i = 6;
 	while (file[i])
 	{
-		if (file[i][0] == '\0' && file[i + 1] && file[i + 1][0] != '\0')
-			exit(ft_exit(data, "Error: Empty line in map"));
 		i++;
 	}
 	return (i - 6);
