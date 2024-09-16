@@ -6,7 +6,7 @@
 /*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 12:18:32 by hguillau          #+#    #+#             */
-/*   Updated: 2024/09/13 12:25:04 by akunegel         ###   ########.fr       */
+/*   Updated: 2024/09/16 18:55:42 by hguillau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	draw_map(int x, int y, int color, t_images *img)
 	int	j;
 	int k;
 
-	i = x + 64;
-	j = y + 64;
+	i = x + 20;
+	j = y + 20;
 	k = x;
 	while (y < j)
 	{
@@ -79,12 +79,12 @@ void	print_minimap(t_data *data, t_images *img)
 				draw_map(x, y, 0x000000, img);
 			else if (data->map.map[pos][i] == '0')
 				draw_map(x, y, 0xFFFFFF, img);
-			x += 64;
+			x += 20;
 			i++;
 		}
 		x = 20;
-		y += 64;
+		y += 20;
 		pos++;
 	} // le -20 est pour la marge de 20 pixel a gauche et au dessus de la minimap
-	draw_player((((data->p.y) * 64) + 20), (((data->p.x) * 64) + 20), 0x0000FF, img);
+	draw_player((((data->p.pos_y) * 20) + 20), (((data->p.pos_x) * 20) + 20), 0x0000FF, img);
 }

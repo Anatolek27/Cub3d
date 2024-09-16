@@ -6,7 +6,7 @@
 /*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 02:02:24 by akunegel          #+#    #+#             */
-/*   Updated: 2024/09/13 12:49:32 by akunegel         ###   ########.fr       */
+/*   Updated: 2024/09/16 18:54:04 by hguillau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include "mlx.h"
 
 # define FOV 60						// FOV
-# define T_SIZE 64					// tile size
-# define P_HEIGHT 32				// Camera position
+# define T_SIZE 10					// tile size
+# define P_HEIGHT 5					// Camera position
 # define WIN_WIDTH 1024				// windows width
 # define WIN_HEIGHT 512				// windows height
 # define SPEED 4					// player speed
@@ -32,10 +32,12 @@ typedef struct s_player
 {
 	int		x;
 	int		y;
-	double dir_x;       // Direction X du joueur (vecteur directionnel)
-    double dir_y;       // Direction Y du joueur (vecteur directionnel)
-    double plane_x;     // Plan X de la caméra (perpendiculaire à la direction)
-    double plane_y;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;       // Direction X du joueur (vecteur directionnel)
+    double	dir_y;       // Direction Y du joueur (vecteur directionnel)
+    double	plane_x;     // Plan X de la caméra (perpendiculaire à la direction)
+    double	plane_y;
 	char	dir;
 }				t_player;
 

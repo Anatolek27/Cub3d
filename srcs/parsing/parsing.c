@@ -6,7 +6,7 @@
 /*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 01:56:24 by akunegel          #+#    #+#             */
-/*   Updated: 2024/09/16 15:05:38 by akunegel         ###   ########.fr       */
+/*   Updated: 2024/09/16 18:39:44 by hguillau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,6 @@ void	parsing(t_data *data)
 	i = 0;
 	check_map_chars(data, i);
 	check_map_playable(data, data->p.x, data->p.y);
+	data->p.pos_x = data->p.x + 0.5;
+	data->p.pos_y = data->p.y + 0.5;
 }
