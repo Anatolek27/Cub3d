@@ -6,7 +6,7 @@
 /*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 01:58:30 by akunegel          #+#    #+#             */
-/*   Updated: 2024/09/13 12:26:26 by akunegel         ###   ########.fr       */
+/*   Updated: 2024/09/16 15:05:48 by akunegel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int	main(int argc, char **argv)
 {
 	t_data	data;
-
+	
+	data.bool = 0;
 	if (argc != 2)
 		return (ft_exit(&data, "Error : Expected exactly 1 argument"));
 	data.paths.pfile = argv[1];

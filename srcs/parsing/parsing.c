@@ -6,7 +6,7 @@
 /*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 01:56:24 by akunegel          #+#    #+#             */
-/*   Updated: 2024/09/13 01:57:01 by akunegel         ###   ########.fr       */
+/*   Updated: 2024/09/16 15:05:38 by akunegel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	check_file_name(t_data *data)
 	data->file = ft_calloc(get_line_nb(data) + 1, sizeof(char *));
 	if (!data->file)
 		exit (ft_exit(data, "Error: Malloc error"));
-	data->bool = 0;
 }
 
 void	parsing(t_data *data)

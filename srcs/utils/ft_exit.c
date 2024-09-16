@@ -6,7 +6,7 @@
 /*   By: akunegel <akunegel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 02:02:55 by akunegel          #+#    #+#             */
-/*   Updated: 2024/09/13 02:03:59 by akunegel         ###   ########.fr       */
+/*   Updated: 2024/09/16 15:06:18 by akunegel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	free_tmp(t_data *data)
 	int	i;
 
 	i = 0;
-	if (data->bool = 1)
+	if (data->bool == 1)
 	{
 		while (data->tmp[i])
 		{
